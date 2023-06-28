@@ -9,7 +9,6 @@ header('Access-Control-Allow-Methods: *');
 // require_once "src/TaskController.php";
 // require_once "src/TaskGateway.php";
 
-
 require "vendor/autoload.php";
 
 set_exception_handler("ErrorHandler::handleException");

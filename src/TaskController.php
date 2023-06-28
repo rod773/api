@@ -16,7 +16,11 @@ class TaskController
                 
                 echo json_encode($this->gateway->getAll());
             } else if ($method == "POST") {
-                echo "create";
+                
+                $data = (array)json_decode(file_get_contents('php://input'));
+
+                var_dump($data);
+
             } else {
                 $this->respondMethodNotAllowed("GET,POST");
             }
