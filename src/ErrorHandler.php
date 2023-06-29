@@ -1,20 +1,30 @@
 <?php
 
-class ErrorHandler{
+class ErrorHandler
+{
 
-   public static function handleException(Throwable $exception){
+    public static function handleError(
+        $errno,
+        $errstr,
+        $errfile,
+        $errline
+    ) {
+        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+    }
 
-    
+
+    public static function handleException(Throwable $exception)
+    {
+
+
         http_response_code(500);
         echo json_encode([
-            
+
             "code" => $exception->getCode(),
             "message" => $exception->getMessage(),
             "file" => $exception->getFile(),
-            "line"=> $exception->getLine(),
+            "line" => $exception->getLine(),
 
         ]);
-   }
-
-    
+    }
 }

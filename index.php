@@ -4,13 +4,11 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
 header('Access-Control-Allow-Methods: *');
 
-// require_once "src/Database.php";
-// require_once "src/ErrorHandler.php";
-// require_once "src/TaskController.php";
-// require_once "src/TaskGateway.php";
+
 
 require "vendor/autoload.php";
 
+set_error_handler("ErrorHandler::handleError");
 set_exception_handler("ErrorHandler::handleException");
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -35,8 +33,7 @@ header("Content-type: application/json; charset=UTF-8");
 
 
 
-if ($resource != "task") {
-    ;
+if ($resource != "task") {;
     http_response_code(404);
     exit;
 }
