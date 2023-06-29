@@ -59,8 +59,11 @@ class TaskController
                         return;
                     }
 
-                    $this->gateway->update($id, $data);
-
+                    $rows = $this->gateway->update($id, $data);
+                    echo json_encode([
+                        "message" => "Task Updated",
+                        "rows" => $rows
+                    ]);
                     break;
 
                 case "DELETE":

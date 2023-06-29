@@ -107,8 +107,31 @@ class TaskGateway
             ];
         }
 
-        print_r($fields);
+        if (empty($fields)) {
 
-        exit;
+            return 0;
+        } else {
+            $sets = array_map(function ($value) {
+                return "$value = :$value";
+            }, array_keys($fields));
+
+            $sql = "update task set " . implode(', ', $sets) .
+                " where id = :id";
+
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+
+            foreach ($fields as $name => $values) {
+
+                $stmt->bindValue(":$name", $values[0], $values[1]);
+            }
+
+            $stmt->execute();
+
+            return $stmt->rowCount();
+        }
     }
 }
