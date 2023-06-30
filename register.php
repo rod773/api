@@ -18,16 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $conn = $database->getConnection();
 
-    $sql = "insert into user (name,username,password_hash,api_key)
-     values (:name , :username, :password_hash; :api_key)";
+    $sql = "insert into user (name,username,password_hash,api_key)" .
+        " values (:name , :username, :password_hash,:api_key)";
 
 
     $stmt = $conn->prepare($sql);
 
     $name = $_POST['name'];
     $username = $_POST['username'];
-    $password_hash = password_hash($_POST['password_hash'], PASSWORD_DEFAULT);
-    $name = $_POST['api_key'];
+    $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $api_key = bin2hex(random_bytes(16));
 
     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     $stmt->bindValue(":username", $username, PDO::PARAM_STR);
@@ -35,7 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $stmt->bindValue(":api_key", $api_key, PDO::PARAM_STR);
 
 
-    $stmr->execute();
+    $stmt->execute();
+
+    echo "Trank you for registering. Your api_key is: $api_key";
+
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -53,13 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <h1>Register</h1>
         <form method="post">
             <label for="name">Name
-                <input type="text" id="name">
+                <input type="text" name="name">
             </label>
             <label for="username">Username
-                <input type="text" id="username">
+                <input type="text" name="username">
             </label>
             <label for="password">Password
-                <input type="password" id="password">
+                <input type="password" name="password">
             </label>
             <button>Register</button>
         </form>
