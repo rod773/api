@@ -1,0 +1,93 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.wordWrap": "on",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.mouseWheelZoom": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": true,
+  "files.autoSave": "onWindowChange",
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "workbench.startupEditor": "none",
+  "editor.fontSize": 14,
+  "workbench.colorCustomizations": {
+    "[Material Theme Palenight High Contrast]": {}
+  },
+
+  "vsicons.dontShowNewVersionMessage": true,
+  "php.validate.executablePath": "D:/laragon/bin/php/php-8.1.10-Win32-vs16-x64/php.exe",
+  "editor.minimap.scale": 3,
+  "editor.minimap.enabled": false,
+
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tabnine.experimentalAutoImports": true,
+  "workbench.preferredHighContrastColorTheme": "Default Dark+",
+  "workbench.preferredLightColorTheme": "Kimbie Dark",
+  "materialTheme.accent": "Cyan",
+  "redhat.telemetry.enabled": false,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "workbench.colorTheme": "Night Owl",
+  "editor.accessibilitySupport": "off",
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": null
+    }
+  ],
+  "liveSassCompile.settings.showOutputWindowOn": "None",
+
+  "xsl.processor": "D:\\Saxon\\saxon-he-11.3.jar",
+  "xsl.stylesheet": "agenda.xsl",
+  "xslt.processor": "D:\\Saxon\\saxon-he-11.3.jar",
+  "dotnet.help.firstView": "gettingStarted",
+  "extensions.confirmedUriHandlerExtensionIds": [
+    "ms-dotnettools.dotnet-interactive-vscode",
+    "ms-dotnettools.vscode-dotnet-pack"
+  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  "omnisharp.enableImportCompletion": true,
+  "omnisharp.enableAsyncCompletion": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "phpserver.phpConfigPath": "D:wamp64/bin/phpphp8.0.26/php.ini",
+  "phpserver.phpPath": "D:wamp64/bin/phpphp8.0.26/php.exe",
+  "window.zoomLevel": -1
+}
