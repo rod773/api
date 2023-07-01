@@ -44,6 +44,11 @@ if (!$auth->authenticateAPIKey()) {
     exit;
 };;
 
+$user_id = $auth->getUserId();
+
+var_dump($user_id);
+
+exit;
 
 $task_gateway = new TaskGateway($database);
 

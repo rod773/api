@@ -15,3 +15,9 @@ api_key VARCHAR(32) NOT NULL,
 PRIMARY KEY (id),
 UNIQUE (username),
 UNIQUE (api_key) );
+
+
+alter table task
+add foreign key(user_id)
+references user(id)
+on delete cascade on update cascade;
