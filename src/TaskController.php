@@ -3,7 +3,7 @@
 class TaskController
 {
 
-    public function __construct(private TaskGateway $gateway)
+    public function __construct(private TaskGateway $gateway, private int $user_id)
     {
     }
     public function processRequest($method, $id)
@@ -14,7 +14,7 @@ class TaskController
 
             if ($method == "GET") {
 
-                echo json_encode($this->gateway->getAll());
+                echo json_encode($this->gateway->getAllforUser($this->user_id));
             } else if ($method == "POST") {
 
                 $data = (array)json_decode(file_get_contents('php://input'), true);
