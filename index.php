@@ -1,19 +1,10 @@
 <?php
 
+require "bootstrap.php";
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
 header('Access-Control-Allow-Methods: *');
-
-
-
-require "vendor/autoload.php";
-
-set_error_handler("ErrorHandler::handleError");
-set_exception_handler("ErrorHandler::handleException");
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-
-$dotenv->load();
 
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -30,27 +21,13 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 
 
-
-
-
 if ($resource != "task") {;
     http_response_code(404);
     exit;
 }
 
 
-if (empty($_SERVER['HTTP_X_API_KEY'])) {
 
-    http_response_code(400);
-
-    echo json_encode([
-        "message" => "Api Key is missing"
-    ]);
-
-    exit;
-}
-
-$api_key = $_SERVER['HTTP_X_API_KEY'];
 
 $database = new Database(
     $_ENV['DB_HOST'],
@@ -61,17 +38,11 @@ $database = new Database(
 
 $user_gateway = new UserGateway($database);
 
-if ($user_gateway->getByAPIKey($api_key) == false) {
+$auth = new Auth($user_gateway);
 
-    http_response_code(401);
-    echo json_encode([
-        "message" => "Invalid Api Key"
-    ]);
+if (!$auth->authenticateAPIKey()) {
     exit;
-};
-
-header("Content-type: application/json; charset=UTF-8");
-
+};;
 
 
 $task_gateway = new TaskGateway($database);
