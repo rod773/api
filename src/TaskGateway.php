@@ -31,14 +31,16 @@ class TaskGateway
         return $data;
     }
 
-    public function get($id)
+    public function getForUser($user_id, $id)
     {
 
-        $sql = "select * from task where id= :id";
+        $sql = "select * from task where id= :id and user_id = :user_id";
 
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 
         $stmt->execute();
 
@@ -54,11 +56,11 @@ class TaskGateway
     }
 
 
-    public function create($data)
+    public function createForUser($user_id, $data)
     {
 
-        $sql = "insert into task (name, priority, is_completed) 
-        values (:name , :priority, :is_completed)";
+        $sql = "insert into task (name, priority, is_completed, user_id) 
+        values (:name , :priority, :is_completed, :user_id)";
 
         $stmt = $this->conn->prepare($sql);
 
@@ -72,6 +74,8 @@ class TaskGateway
 
         $stmt->bindValue(":is_completed", $data['is_completed'] ?? false, PDO::PARAM_BOOL);
 
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+
 
         $stmt->execute();
 
@@ -79,7 +83,7 @@ class TaskGateway
     }
 
 
-    public function update($id, $data)
+    public function updateForUser($user_id, $id, $data)
     {
 
         $fields = [];
@@ -120,12 +124,14 @@ class TaskGateway
             }, array_keys($fields));
 
             $sql = "update task set " . implode(', ', $sets) .
-                " where id = :id";
+                " where id = :id and user_id = :user_id";
 
 
             $stmt = $this->conn->prepare($sql);
 
             $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+            $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 
 
             foreach ($fields as $name => $values) {
@@ -140,14 +146,16 @@ class TaskGateway
     }
 
 
-    public function delete($id)
+    public function deleteForUser($user_id, $id)
     {
 
-        $sql = "delete from task where id = :id";
+        $sql = "delete from task where id = :id and user_id = :user_id";
 
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
 
         $stmt->execute();
 
