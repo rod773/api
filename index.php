@@ -39,6 +39,21 @@ if ($resource != "task") {;
 }
 
 
+if (empty($_SERVER['HTTP_X_API_KEY'])) {
+
+    http_response_code(400);
+
+    json_encode([
+        "message" => "Api Key is missing"
+    ]);
+
+    exit;
+}
+
+$api_key = $_SERVER['HTTP_X_API_KEY'];
+
+echo $api_key;
+exit;
 
 $database = new Database(
     $_ENV['DB_HOST'],
