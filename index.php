@@ -40,9 +40,13 @@ $user_gateway = new UserGateway($database);
 
 $auth = new Auth($user_gateway);
 
-if (!$auth->authenticateAPIKey()) {
+if (!$auth->autheticateAccessToken()) {
     exit;
-};;
+};
+
+echo "valid authetication";
+
+exit;
 
 $user_id = $auth->getUserId();
 
