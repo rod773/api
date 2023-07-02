@@ -23,5 +23,16 @@ if (
     ]);
 }
 
+$database = new Database(
+    $_ENV['DB_HOST'],
+    $_ENV['DB_NAME'],
+    $_ENV['DB_USER'],
+    $_ENV['DB_PASS']
+);
 
-echo json_encode($data);
+$user_gateway = new UserGateway($database);
+
+$user = $user_gateway->getByUserName($data['username']);
+
+
+echo json_encode($user);
