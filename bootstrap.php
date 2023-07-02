@@ -1,7 +1,5 @@
 <?php
 
-
-
 require "vendor/autoload.php";
 
 set_error_handler("ErrorHandler::handleError");
