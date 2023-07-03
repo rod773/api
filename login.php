@@ -51,7 +51,7 @@ if (!password_verify($data['password'], $user['password_hash'])) {
 }
 
 $payload = [
-    "id" => $user['id'],
+    "sub" => $user['id'],
     "name" => $user['name']
 ];
 
