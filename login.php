@@ -51,11 +51,11 @@ if (!password_verify($data['password'], $user['password_hash'])) {
 }
 
 $payload = [
-    "id" => $user['id'],
+    "sub" => $user['id'],
     "name" => $user['name']
 ];
 
-$codec = new JWTcodec;
+$codec = new JWTcodec($_ENV['SECRET_KEY']);
 
 $access_token = $codec->encode($payload);
 
