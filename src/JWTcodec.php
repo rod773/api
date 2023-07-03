@@ -10,7 +10,7 @@ class JWTcodec
             "alg" => "HS256"
         ]);
 
-        $header - $this->base64urlEncode($header);
+        $header = $this->base64urlEncode($header);
 
         $payload = json_encode($payload);
 
@@ -24,12 +24,13 @@ class JWTcodec
         return "$header.$payload.$signature";
     }
 
-    private function base64urlEncode($text)
+    private function base64urlEncode($json)
     {
-        return str_replace(
+
+        return  str_replace(
             ["+", "/", "="],
             ["-", "_", ""],
-            base64_encode($text)
+            base64_encode($json)
         );
     }
 }

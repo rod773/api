@@ -55,7 +55,9 @@ $payload = [
     "name" => $user['name']
 ];
 
-$access_token = base64_encode(json_encode($payload));
+$codec = new JWTcodec;
+
+$access_token = $codec->encode($payload);
 
 echo json_encode(
     [
