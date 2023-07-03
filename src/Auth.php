@@ -73,7 +73,7 @@ class Auth
         if ($data === false) {
             http_response_code(404);
             json_encode([
-                "message" => "invalis JSON"
+                "message" => "invalid JSON"
             ]);
             return false;
         }
