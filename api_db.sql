@@ -20,10 +20,6 @@ ALTER TABLE api_db.task
 ADD COLUMN user_id INT NULL AFTER is_completed;
 
 
-ALTER TABLE api_db.task 
-ADD COLUMN user_id INT NULL AFTER is_completed;
-
-
 alter table task
 add foreign key(user_id)
 references user(id)
