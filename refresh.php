@@ -58,4 +58,4 @@ if ($user === false) {
     exit;
 }
 
-var_dump($user);
+require "tokens.php";
