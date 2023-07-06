@@ -26,8 +26,8 @@ references user(id)
 on delete cascade on update cascade;
 
 create table refresh_token(
-    token_hash varchar(64) not null,
-    expires_at int unsigned not null,
-    PRIMARY KEY (token_hash),
-    index (expires_at)
+token_hash varchar(64) not null,
+expires_at int unsigned not null,
+PRIMARY KEY (token_hash),
+index (expires_at)
 );

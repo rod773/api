@@ -10,9 +10,12 @@ $payload = [
 
 $access_token = $codec->encode($payload);
 
+
+$refresh_tohen_expiry = time() + 432000;
+
 $refresh_token = $codec->encode([
     "sub" => $user['id'],
-    "exp" => time() + 432000
+    "exp" => $refresh_tohen_expiry
 ]);
 
 echo json_encode(
