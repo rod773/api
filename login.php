@@ -51,24 +51,7 @@ if (!password_verify($data['password'], $user['password_hash'])) {
     exit;
 }
 
-$payload = [
-    "sub" => $user['id'],
-    "name" => $user['name'],
-    "exp" => time() + 20
-];
-
 $codec = new JWTcodec($_ENV['SECRET_KEY']);
 
-$access_token = $codec->encode($payload);
 
-$refresh_token = $codec->encode([
-    "sub" => $user['id'],
-    "exp" => time() + 432000
-]);
-
-echo json_encode(
-    [
-        "access_token" => $access_token,
-        "refresh_token" => $refresh_token
-    ]
-);
+require "tokens.php";

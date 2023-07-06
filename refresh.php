@@ -27,7 +27,7 @@ $codec = new JWTcodec($_ENV['SECRET_KEY']);
 try {
     $payload = $codec->decode($data['token']);
 } catch (Exception) {
-    http_response_code(404);
+    http_response_code(400);
     echo json_encode([
         "message" => "invalid token"
     ]);
@@ -53,7 +53,7 @@ $user = $user_gateway->getById($user_id);
 if ($user === false) {
     http_response_code(401);
     echo json_encode([
-        "message" => "unauthorized"
+        "message" => "invalid authentication"
     ]);
     exit;
 }
